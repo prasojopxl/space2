@@ -25,6 +25,18 @@ app.use(
     })
 )
 
+const db = require("./models")
+db.connection
+    .sync({
+        force: true,
+    })
+    .then(() => {
+        console.log("database connected")
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
 app.get("/", (req, res) => {
     res.json("APP is running...")
 })
